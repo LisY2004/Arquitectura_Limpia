@@ -1,0 +1,9 @@
+flowchart LR
+  REST[Adaptador REST] --> UC[Crear factura]
+  AMQP[Adaptador AMQP] --> UC
+  UC --> DOM[Reglas de dominio: validación, fraude, impuestos y revisión]
+  UC --> PORT[Puerto InvoiceRepository]
+  PORT -. implementa .-> MEM[Adaptador memoria]
+  PORT -. implementa .-> JDBC[Adaptador JDBC]
+  JDBC --> PG[(PostgreSQL)]
+  JDBC --> ORA[(Oracle)]

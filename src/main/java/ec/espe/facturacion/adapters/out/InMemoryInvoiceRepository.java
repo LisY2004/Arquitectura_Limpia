@@ -1,0 +1,3 @@
+package ec.espe.facturacion.adapters.out;
+import ec.espe.facturacion.application.*; import ec.espe.facturacion.domain.Invoice; import java.util.*; import java.util.concurrent.ConcurrentHashMap;
+public class InMemoryInvoiceRepository implements InvoiceRepository { private final Map<String,Invoice> data=new ConcurrentHashMap<>(); public Optional<Invoice> findByOperationId(String id){return Optional.ofNullable(data.get(id));} public void save(Invoice i,CreateInvoiceCommand c){data.putIfAbsent(i.operationId(),i);} }

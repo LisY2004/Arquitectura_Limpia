@@ -1,0 +1,3 @@
+package ec.espe.facturacion.domain;
+import java.math.BigDecimal;
+public record InvoiceLine(String description,int quantity,BigDecimal unitPrice) { public InvoiceLine { if(description==null||description.isBlank()||quantity<=0||unitPrice==null||unitPrice.signum()<0) throw new IllegalArgumentException("Detalle inválido"); } public BigDecimal amount(){return unitPrice.multiply(BigDecimal.valueOf(quantity));} }
